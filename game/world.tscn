@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://brcdv7p5j33fy"]
+
+[ext_resource type="PackedScene" uid="uid://0sk731ollf74" path="res://game/player/player.tscn" id="1_aseec"]
+[ext_resource type="PackedScene" uid="uid://dou6baba0a6d0" path="res://game/floor.tscn" id="2_tvmmn"]
+[ext_resource type="Texture2D" uid="uid://4ckhg1qkperm" path="res://game/assets/reticle.png" id="3_tvmmn"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wse8f"]
+ground_bottom_color = Color(0.16862746, 0.46666667, 0.22352941, 1)
+
+[sub_resource type="Sky" id="Sky_ic0uy"]
+sky_material = SubResource("ProceduralSkyMaterial_wse8f")
+
+[sub_resource type="Environment" id="Environment_k3n1d"]
+background_mode = 2
+sky = SubResource("Sky_ic0uy")
+
+[node name="World" type="Node3D" unique_id=892084160]
+
+[node name="Player" parent="." unique_id=1258471274 instance=ExtResource("1_aseec")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0209968, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=984634879]
+environment = SubResource("Environment_k3n1d")
+
+[node name="Floor" parent="." unique_id=2008860581 instance=ExtResource("2_tvmmn")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=181875007]
+transform = Transform3D(0.7071067, 0.61237246, -0.35355335, 1.4901161e-08, 0.49999994, 0.86602545, 0.70710677, -0.61237246, 0.35355338, 0, 5, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=263239056]
+layer = 100
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer" unique_id=1085401337]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer" unique_id=339280649]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("3_tvmmn")

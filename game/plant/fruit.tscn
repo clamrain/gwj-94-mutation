@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://chlw40p3xls7p"]
+
+[ext_resource type="Script" uid="uid://b5o7rlqys5fxu" path="res://game/plant/fruit.gd" id="1_apki7"]
+
+[sub_resource type="Gradient" id="Gradient_2otbg"]
+colors = PackedColorArray(0.83137256, 0.5686275, 0, 1, 0.43, 0.29383335, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_apki7"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8ygx6"]
+noise = SubResource("FastNoiseLite_apki7")
+color_ramp = SubResource("Gradient_2otbg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4qlnt"]
+albedo_texture = SubResource("NoiseTexture2D_8ygx6")
+
+[sub_resource type="SphereMesh" id="SphereMesh_2otbg"]
+material = SubResource("StandardMaterial3D_4qlnt")
+radius = 0.1
+height = 0.2
+radial_segments = 6
+rings = 6
+
+[sub_resource type="Gradient" id="Gradient_qlwwt"]
+colors = PackedColorArray(0.10412524, 0.1551654, 0, 1, 0.44158685, 0.3046847, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sj04t"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_frlpq"]
+height = 392
+noise = SubResource("FastNoiseLite_sj04t")
+color_ramp = SubResource("Gradient_qlwwt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewf82"]
+albedo_texture = SubResource("NoiseTexture2D_frlpq")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kb4pr"]
+material = SubResource("StandardMaterial3D_ewf82")
+radius = 0.01
+height = 0.05
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_apki7"]
+radius = 0.1
+
+[node name="Fruit" type="Node3D" unique_id=1530437086]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+script = ExtResource("1_apki7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1107096396]
+mesh = SubResource("SphereMesh_2otbg")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1936705505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("CapsuleMesh_kb4pr")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=410109677 groups=["item_area"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1298408170]
+shape = SubResource("SphereShape3D_apki7")

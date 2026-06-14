@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://c03hcbuuknn87"]
+
+[ext_resource type="Script" uid="uid://c3h3a5ryykd4m" path="res://game/plant/branch.gd" id="1_okq2n"]
+
+[sub_resource type="Gradient" id="Gradient_5nd8r"]
+colors = PackedColorArray(0.20080483, 0.4789809, 0.11614254, 1, 0.12325, 0.29, 0.0725, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_okq2n"]
+frequency = 0.0424
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qtk8g"]
+height = 128
+noise = SubResource("FastNoiseLite_okq2n")
+color_ramp = SubResource("Gradient_5nd8r")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lyhag"]
+albedo_texture = SubResource("NoiseTexture2D_qtk8g")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_s4lns"]
+material = SubResource("StandardMaterial3D_lyhag")
+radius = 0.01
+height = 0.1
+radial_segments = 6
+rings = 1
+
+[node name="Branch" type="Node3D" unique_id=1584446597]
+script = ExtResource("1_okq2n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1868821316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+mesh = SubResource("CapsuleMesh_s4lns")
+
+[node name="Subbranches" type="Node3D" parent="." unique_id=874827259]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
