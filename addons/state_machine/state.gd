@@ -1,23 +1,3 @@
-extends Node
-class_name State
-
-var host: Node
-
-var _transition: Callable
-func transition(new_state):
-	_transition.call(self, new_state)
-
-func enter():
-	return
-
-func exit():
-	return
-
-func process(_delta):
-	return
-
-func physics_process(_delta):
-	return
-
-func input_process(_event):
-	return
+version https://git-lfs.github.com/spec/v1
+oid sha256:c0a00c29eb481af10843238036f621ca678baffd6bc42e1ff7083e77a2eacb6a
+size 287

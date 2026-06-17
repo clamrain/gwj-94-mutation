@@ -1,15 +1,3 @@
-@tool
-extends Node3D
-class_name Branch
-
-@onready var subbranches: Node3D = $Subbranches
-@onready var mesh_instance: MeshInstance3D:
-	get():
-		if not mesh_instance:
-			mesh_instance = $MeshInstance3D
-		return mesh_instance
-
-
-@export_range(0.0, 1.0) var color_stage: float = 0.0:
-	set(value):
-		color_stage = value
+version https://git-lfs.github.com/spec/v1
+oid sha256:03f160d60238eb94d49bb14f093e1004f68655c43fd804451eed38a9ee63cb11
+size 472

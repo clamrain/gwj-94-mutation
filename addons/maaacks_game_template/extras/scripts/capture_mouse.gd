@@ -1,8 +1,3 @@
-extends Control
-## Control node that captures the mouse for games that require it. 
-##
-## Used for games that use the mouse to move the camera (ex. FPS or third-person shooters).
-
-func _gui_input(event):
-	if event is InputEventMouseButton and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+version https://git-lfs.github.com/spec/v1
+oid sha256:3e5ab62937feb8b03ae39b69998c3b1e0eda3220670a8748ea45940331a553da
+size 340

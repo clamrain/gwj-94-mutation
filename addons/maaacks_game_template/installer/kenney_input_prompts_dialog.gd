@@ -1,12 +1,3 @@
-@tool
-extends ConfirmationDialog
-
-const SHORT_DESCRIPTION : String = "Choose a style for icons in the input remapping menu. This style can be changed later."
-
-signal configuration_selected(index : int)
-
-func _on_item_list_item_selected(index) -> void:
-	configuration_selected.emit(index)
-
-func set_short_description() -> void:
-	%Label.text = SHORT_DESCRIPTION
+version https://git-lfs.github.com/spec/v1
+oid sha256:495b1b5dd650f5754f1da22414611dc19092785e3650cdab566b86acf841d051
+size 360

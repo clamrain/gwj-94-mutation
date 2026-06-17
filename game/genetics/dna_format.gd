@@ -1,7 +1,3 @@
-extends Resource
-class_name DNAFormat
-
-@export var genome_size := 32
-@export var chromosome_size := 8
-
-@export var gene_dict: Dictionary[String, Array]
+version https://git-lfs.github.com/spec/v1
+oid sha256:aff43746f4f81067d6d3b5f0aea2f6266eba918319579a191b2fc2613a8d824e
+size 149

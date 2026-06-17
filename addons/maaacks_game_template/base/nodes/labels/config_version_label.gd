@@ -1,17 +1,3 @@
-@tool
-extends Label
-## Displays the value of `application/config/version`, set in project settings.
-
-const NO_VERSION_STRING : String = "0.0.0"
-
-## Prefixes the value of `application/config/version` when displaying to the user.
-@export var version_prefix : String = "v"
-
-func update_version_label() -> void:
-	var config_version : String = ProjectSettings.get_setting("application/config/version", NO_VERSION_STRING)
-	if config_version.is_empty():
-		config_version = NO_VERSION_STRING
-	text = version_prefix + config_version
-
-func _ready() -> void:
-	update_version_label()
+version https://git-lfs.github.com/spec/v1
+oid sha256:6cf08977a3532ef00752f06966a0781d0246d25ae61897475759d3a6a5200246
+size 572

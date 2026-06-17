@@ -1,18 +1,3 @@
-@tool
-extends Label
-## Displays the value of `application/config/name`, set in project settings.
-
-const NO_NAME_STRING : String = "Title"
-
-## If true, update the title when ready.
-@export var auto_update : bool = true
-
-func update_name_label():
-	var config_name : String = ProjectSettings.get_setting("application/config/name", NO_NAME_STRING)
-	if config_name.is_empty():
-		config_name = NO_NAME_STRING
-	text = config_name
-
-func _ready():
-	if auto_update:
-		update_name_label()
+version https://git-lfs.github.com/spec/v1
+oid sha256:308ac0f89f1ee3bd114eff8cb82c287949265d30e17961e080abc31a339b1d7f
+size 478

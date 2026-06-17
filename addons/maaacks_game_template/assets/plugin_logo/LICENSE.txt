@@ -1,5 +1,3 @@
-Maaack's Minimal Game Template Logo
-Copyright (c) Marek Belski
-
-This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International
-license (CC BY-NC-ND 4.0 International): https://creativecommons.org/licenses/by-nc-nd/4.0
+version https://git-lfs.github.com/spec/v1
+oid sha256:91f88a4dda8ff5e2081e15096e161dc7cb04e925e5de89f0385f6c25795ca420
+size 262

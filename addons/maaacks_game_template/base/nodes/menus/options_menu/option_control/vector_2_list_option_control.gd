@@ -1,9 +1,3 @@
-@tool
-class_name Vector2ListOptionControl
-extends ListOptionControl
-
-func _value_title_map(value : Variant) -> String:
-	if value is Vector2 or value is Vector2i:
-		return "%d x %d" % [value.x , value.y]
-	else:
-		return super._value_title_map(value)
+version https://git-lfs.github.com/spec/v1
+oid sha256:7ee342807d041925bda09f97625c73dda18824b04e70b193a6fd33ac1f594a62
+size 249

@@ -1,26 +1,3 @@
-[gd_scene format=3 uid="uid://b0gl0241dalxc"]
-
-[ext_resource type="Script" uid="uid://4faw6411kr8y" path="res://game/player/hand_inventory.gd" id="1_lfkrl"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lfkrl"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="PrismMesh" id="PrismMesh_27n0t"]
-material = SubResource("StandardMaterial3D_lfkrl")
-size = Vector3(0.1, 0.1, 0.1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yrr47"]
-albedo_color = Color(0, 1, 0.099999905, 1)
-
-[sub_resource type="PrismMesh" id="PrismMesh_7iobq"]
-material = SubResource("StandardMaterial3D_yrr47")
-size = Vector3(0.1, 0.1, 0.1)
-
-[node name="HandInventory" type="Node3D" unique_id=717194800]
-script = ExtResource("1_lfkrl")
-
-[node name="ItemNodeA" type="MeshInstance3D" parent="." unique_id=1614381484]
-mesh = SubResource("PrismMesh_27n0t")
-
-[node name="ItemNodeB" type="MeshInstance3D" parent="." unique_id=1263459154]
-mesh = SubResource("PrismMesh_7iobq")
+version https://git-lfs.github.com/spec/v1
+oid sha256:3babf685d9f2513d55360e941bfb249724cbcd1a580e4bbf964b2750f2c994e4
+size 410

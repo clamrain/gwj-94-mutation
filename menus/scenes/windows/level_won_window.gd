@@ -1,31 +1,3 @@
-@tool
-extends OverlaidWindow
-
-signal continue_pressed
-signal main_menu_pressed
-signal restart_pressed
-
-func _ready():
-	if OS.has_feature("web"):
-		%ExitButton.hide()
-
-func _on_exit_button_pressed():
-	%ExitConfirmation.show()
-
-func _on_main_menu_button_pressed():
-	%MainMenuConfirmation.show()
-
-func _on_close_button_pressed():
-	continue_pressed.emit()
-	close()
-
-func _on_main_menu_confirmation_confirmed():
-	main_menu_pressed.emit()
-	close()
-
-func _on_restart_button_pressed():
-	restart_pressed.emit()
-	close()
-
-func _on_exit_confirmation_confirmed():
-	get_tree().quit()
+version https://git-lfs.github.com/spec/v1
+oid sha256:d04cbfc7f9106740d908f5f2ef0120c6c7230b8f737f9ac928ee0933aa374699
+size 571

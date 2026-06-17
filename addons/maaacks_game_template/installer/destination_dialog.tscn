@@ -1,12 +1,3 @@
-[gd_scene format=3 uid="uid://doa4t485iflon"]
-
-[node name="DestinationDialog" type="FileDialog" unique_id=792242867]
-oversampling_override = 1.0
-title = "Select a Destination"
-initial_position = 2
-size = Vector2i(1024, 640)
-visible = true
-exclusive = false
-ok_button_text = "Select Current Folder"
-mode_overrides_title = false
-file_mode = 2
+version https://git-lfs.github.com/spec/v1
+oid sha256:28c466a55d27db6549b889ce51c33bcc5b57726296242b6efe3311631f27db4d
+size 341
