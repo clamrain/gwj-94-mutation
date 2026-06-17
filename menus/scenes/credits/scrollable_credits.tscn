@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9d9d0e6e05e26e6096812f6f60c33bf9c45f31218b6edc52007a9dacdbd7e0aa
-size 686
+[gd_scene format=3 uid="uid://bv4ntsn5wdego"]
+
+[ext_resource type="Script" uid="uid://intso2d8wihv" path="res://menus/scenes/credits/scrollable_credits.gd" id="1_jnbjt"]
+[ext_resource type="PackedScene" uid="uid://dngpvqgcupe6h" path="res://menus/scenes/credits/credits_label.tscn" id="2_35kdw"]
+
+[node name="ScrollableCredits" type="Control" unique_id=1582148595]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jnbjt")
+
+[node name="CreditsLabel" parent="." unique_id=346732506 instance=ExtResource("2_35kdw")]
+unique_name_in_owner = true
+layout_mode = 1
+fit_content = false
+scroll_active = true

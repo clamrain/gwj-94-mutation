@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:03f160d60238eb94d49bb14f093e1004f68655c43fd804451eed38a9ee63cb11
-size 472
+@tool
+extends Node3D
+class_name Branch
+
+var order = -1
+
+@onready var subbranches: Node3D = $Subbranches
+@onready var mesh_instance: MeshInstance3D:
+	get():
+		if not mesh_instance:
+			mesh_instance = $MeshInstance3D
+		return mesh_instance
+
+@export_color_no_alpha var color: Color = Color.WHITE:
+	set(_color):
+		color = _color
+		if $StemMesh and $ThornsMesh:
+			$StemMesh.get_active_material(0).albedo_color = color
+			$ThornsMesh.get_active_material(0).albedo_color = color

@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:aff43746f4f81067d6d3b5f0aea2f6266eba918319579a191b2fc2613a8d824e
-size 149
+extends Resource
+class_name DNAFormat
+
+@export var genome_byte_count := 32
+@export var chromosome_byte_count := 8
+
+@export var gene_list: Array[Gene]

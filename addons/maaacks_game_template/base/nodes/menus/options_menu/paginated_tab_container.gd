@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3a3d97e6f6586f94e7d2b5faeffb14ed6d375b31edaaf5d64b299ab707da9c00
-size 410
+extends TabContainer
+## Applies UI page up and page down inputs to tab switching.
+
+func _unhandled_input(event : InputEvent) -> void:
+	if not is_visible_in_tree():
+		return
+	if event.is_action_pressed("ui_page_down"):
+		current_tab = (current_tab+1) % get_tab_count()
+	elif event.is_action_pressed("ui_page_up"):
+		if current_tab == 0:
+			current_tab = get_tab_count()-1
+		else:
+			current_tab = current_tab-1

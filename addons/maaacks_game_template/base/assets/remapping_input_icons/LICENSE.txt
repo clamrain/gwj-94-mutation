@@ -1,3 +1,1 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:14f54bd5a2c54aad28cd6d829396ea90a7d627f4995c22bee955e77419d00cf2
-size 150
+Remapping input icons by Marek Belski is marked with CC0 1.0. To view a copy of this license, visit https://creativecommons.org/publicdomain/zero/1.0/

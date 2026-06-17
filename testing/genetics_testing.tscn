@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2fa152f06c28a23f1d011eeda0566447e0614347341539ec23650bc13d4168f7
-size 260
+[gd_scene format=3 uid="uid://by51jdw11e6qh"]
+
+[ext_resource type="Script" uid="uid://ujt3erg1upib" path="res://testing/genetics_testing.gd" id="1_s1fcr"]
+
+[node name="Node3D" type="Node3D" unique_id=795119130]
+script = ExtResource("1_s1fcr")
+object_count = 8

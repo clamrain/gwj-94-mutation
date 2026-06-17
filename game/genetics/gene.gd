@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a552ae12945532e21f69dae9388243f80fa10476efb6cb57bb2ba37d93a66fed
-size 180
+extends Resource
+class_name Gene
+
+@export var id: String
+@export_enum("single", "poly") var type: String
+@export var start_position: int
+@export var end_position: int # exclusive
+

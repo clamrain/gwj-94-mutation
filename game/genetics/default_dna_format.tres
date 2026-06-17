@@ -1,3 +1,59 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cada68832b7410a7c384b19fe7a8247f9b8f0b201eb613bec29366ba459df869
-size 1929
+[gd_resource type="Resource" script_class="DNAFormat" format=3 uid="uid://bllipkkt4mtt4"]
+
+[ext_resource type="Script" uid="uid://n4crb3gwrk3n" path="res://game/genetics/dna_format.gd" id="1_i8dm3"]
+[ext_resource type="Script" uid="uid://buve8f5lybthp" path="res://game/genetics/gene.gd" id="1_tmrbn"]
+
+[sub_resource type="Resource" id="Resource_tmrbn"]
+script = ExtResource("1_tmrbn")
+id = "stem_color_r"
+type = "poly"
+start_position = 32
+end_position = 36
+metadata/_custom_type_script = "uid://buve8f5lybthp"
+
+[sub_resource type="Resource" id="Resource_40e5y"]
+script = ExtResource("1_tmrbn")
+id = "stem_color_g"
+type = "poly"
+start_position = 36
+end_position = 40
+metadata/_custom_type_script = "uid://buve8f5lybthp"
+
+[sub_resource type="Resource" id="Resource_uh4wp"]
+script = ExtResource("1_tmrbn")
+id = "stem_color_b"
+type = "poly"
+start_position = 40
+end_position = 44
+metadata/_custom_type_script = "uid://buve8f5lybthp"
+
+[sub_resource type="Resource" id="Resource_dlw4g"]
+script = ExtResource("1_tmrbn")
+id = "stem_length"
+type = "poly"
+start_position = 48
+end_position = 52
+metadata/_custom_type_script = "uid://buve8f5lybthp"
+
+[sub_resource type="Resource" id="Resource_ulplu"]
+script = ExtResource("1_tmrbn")
+id = "stem_thickness"
+type = "poly"
+start_position = 52
+end_position = 56
+metadata/_custom_type_script = "uid://buve8f5lybthp"
+
+[sub_resource type="Resource" id="Resource_70fuu"]
+script = ExtResource("1_tmrbn")
+id = "order_size"
+type = "poly"
+start_position = 64
+end_position = 68
+metadata/_custom_type_script = "uid://buve8f5lybthp"
+
+[resource]
+script = ExtResource("1_i8dm3")
+genome_byte_count = 8
+chromosome_byte_count = 2
+gene_list = Array[ExtResource("1_tmrbn")]([SubResource("Resource_tmrbn"), SubResource("Resource_40e5y"), SubResource("Resource_uh4wp"), SubResource("Resource_dlw4g"), SubResource("Resource_ulplu"), SubResource("Resource_70fuu")])
+metadata/_custom_type_script = "uid://n4crb3gwrk3n"

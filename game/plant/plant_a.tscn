@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bfda8ea698d10b376f7202d1550bac6f095880f11b932911d11ee341c46d87f9
-size 523
+[gd_scene format=3 uid="uid://f7alb2qkxbn5"]
+
+[ext_resource type="PackedScene" uid="uid://d2k8qq0yi83tj" path="res://game/plant/plant.tscn" id="1_vc6ps"]
+[ext_resource type="PackedScene" uid="uid://e8kbixu4fi6g" path="res://game/plant/branch_a.tscn" id="2_lq1g4"]
+[ext_resource type="PackedScene" uid="uid://dupc16kbla8xw" path="res://game/plant/fruit_a.tscn" id="3_yjlbg"]
+
+[node name="Plant" unique_id=1486385375 instance=ExtResource("1_vc6ps")]
+branch_scene = ExtResource("2_lq1g4")
+fruit_scene = ExtResource("3_yjlbg")

@@ -1,3 +1,86 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:0049b933ba3e619c5a6baa6ce35c5c42da39589234360c3e3fe899793b16d8ff
-size 3332
+[gd_scene format=3 uid="uid://d2k8qq0yi83tj"]
+
+[ext_resource type="Script" uid="uid://1qi4nkls8667" path="res://game/plant/plant.gd" id="1_vwn68"]
+[ext_resource type="PackedScene" uid="uid://c03hcbuuknn87" path="res://game/plant/branch.tscn" id="2_bwt6v"]
+[ext_resource type="PackedScene" uid="uid://chlw40p3xls7p" path="res://game/plant/fruit.tscn" id="3_tvbo0"]
+
+[sub_resource type="Curve" id="Curve_bwt6v"]
+_limits = [1.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.46544126, 0, 0, Vector2(0.73042506, 1.4300847), -0.3887829, -0.3887829, 0, 0, Vector2(1, 2.5361562), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_mbpii"]
+_limits = [0.0, 4.0, 0.0, 20.0]
+_data = [Vector2(0, 1.5385346), 0.0, 0.0, 0, 0, Vector2(11.757425, 0), 0.0, 0.0, 0, 0, Vector2(20, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_tvbo0"]
+_limits = [0.0, 90.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.67202973, 13.465752), 0.0, 0.0, 0, 0, Vector2(1, 29.118874), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_wk6d1"]
+_limits = [0.0, 90.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.67202973, 13.465752), 0.0, 0.0, 0, 0, Vector2(1, 45.192677), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_tvbo0"]
+colors = PackedColorArray(0.33, 0.15400001, 0, 1, 0.17, 0.11905667, 0.0646, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mbpii"]
+frequency = 0.0424
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wk6d1"]
+height = 128
+noise = SubResource("FastNoiseLite_mbpii")
+color_ramp = SubResource("Gradient_tvbo0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_asyso"]
+albedo_texture = SubResource("NoiseTexture2D_wk6d1")
+
+[sub_resource type="SphereMesh" id="SphereMesh_2skyl"]
+material = SubResource("StandardMaterial3D_asyso")
+radius = 0.05
+height = 0.05
+radial_segments = 8
+rings = 5
+is_hemisphere = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tvbo0"]
+radius = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mbpii"]
+radius = 1.0
+
+[node name="Plant" type="Node3D" unique_id=1486385375]
+script = ExtResource("1_vwn68")
+branch_scene = ExtResource("2_bwt6v")
+fruit_scene = ExtResource("3_tvbo0")
+order = 18
+subbranch_count_distribution = SubResource("Curve_bwt6v")
+subbranch_count_order_variation = SubResource("Curve_mbpii")
+subbranch_spread_horizontal = SubResource("Curve_tvbo0")
+subbranch_spread_vertical = SubResource("Curve_wk6d1")
+subbranch_scale_multiplier = 0.98
+branch_growing_duration = 0.1
+fruit_branch_min_order = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1360904410]
+mesh = SubResource("SphereMesh_2skyl")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=460976083 groups=["plant_area"]]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1518178615]
+shape = SubResource("SphereShape3D_tvbo0")
+
+[node name="PollinationCandidateRadius" type="Area3D" parent="." unique_id=1230306368]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PollinationCandidateRadius" unique_id=2137444439]
+shape = SubResource("SphereShape3D_mbpii")

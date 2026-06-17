@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3babf685d9f2513d55360e941bfb249724cbcd1a580e4bbf964b2750f2c994e4
-size 410
+[gd_scene format=3 uid="uid://b0gl0241dalxc"]
+
+[ext_resource type="Script" uid="uid://4faw6411kr8y" path="res://game/player/hand_inventory.gd" id="1_lfkrl"]
+
+[node name="HandInventory" type="Node3D" unique_id=717194800]
+script = ExtResource("1_lfkrl")
+
+[node name="ItemNodeA" type="MeshInstance3D" parent="." unique_id=1614381484]
+
+[node name="ItemNodeB" type="MeshInstance3D" parent="." unique_id=1263459154]

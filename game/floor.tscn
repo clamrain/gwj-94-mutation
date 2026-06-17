@@ -1,3 +1,75 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:35b95e270850392661f465f92382a72a205936d5a8c917724c21d7195300b5a7
-size 2808
+[gd_scene format=3 uid="uid://dou6baba0a6d0"]
+
+[ext_resource type="Script" uid="uid://cx5rc1x7kesbu" path="res://game/floor.gd" id="1_wuf0x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a1npp"]
+size = Vector3(60, 1.2, 60)
+
+[sub_resource type="Gradient" id="Gradient_805w3"]
+offsets = PackedFloat32Array(0.0014124294, 1)
+colors = PackedColorArray(0, 0.34, 0.022666646, 1, 0.07450981, 0.40392157, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_805w3"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fhh06"]
+noise = SubResource("FastNoiseLite_805w3")
+color_ramp = SubResource("Gradient_805w3")
+seamless = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70uel"]
+albedo_texture = SubResource("NoiseTexture2D_fhh06")
+uv1_triplanar = true
+texture_filter = 4
+
+[sub_resource type="BoxMesh" id="BoxMesh_a0tk4"]
+material = SubResource("StandardMaterial3D_70uel")
+size = Vector3(60, 1, 60)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_noarx"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="Gradient" id="Gradient_a1npp"]
+offsets = PackedFloat32Array(0.0014124294, 1)
+colors = PackedColorArray(0.3431034, 0.15240046, 0, 1, 0.07570679, 0.009720079, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wuf0x"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_108kh"]
+noise = SubResource("FastNoiseLite_wuf0x")
+color_ramp = SubResource("Gradient_a1npp")
+seamless = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evfpl"]
+albedo_texture = SubResource("NoiseTexture2D_108kh")
+uv1_triplanar = true
+texture_filter = 4
+
+[sub_resource type="BoxMesh" id="BoxMesh_i60j7"]
+material = SubResource("StandardMaterial3D_evfpl")
+size = Vector3(50, 1, 50)
+
+[node name="Floor" type="Node3D" unique_id=2008860581]
+script = ExtResource("1_wuf0x")
+
+[node name="OuterGrass" type="Node3D" parent="." unique_id=1951083442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="OuterGrass" unique_id=760314735]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OuterGrass/StaticBody3D" unique_id=812005270]
+shape = SubResource("BoxShape3D_a1npp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OuterGrass" unique_id=1920610057]
+mesh = SubResource("BoxMesh_a0tk4")
+skeleton = NodePath("../..")
+
+[node name="Farmland" type="Node3D" parent="." unique_id=492514313]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Farmland" unique_id=271093694 groups=["farmland"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Farmland/StaticBody3D" unique_id=1631792362]
+shape = SubResource("BoxShape3D_noarx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Farmland" unique_id=1345095342]
+mesh = SubResource("BoxMesh_i60j7")
+skeleton = NodePath("../..")

@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:22c92a9af825438bde898fa0492845d24355aabe9359e8bb999d1b7b749ed3e6
-size 574
+extends SubViewport
+## Script to apply the anti-aliasing setting from [PlayerConfig] to a [SubViewport].
+
+## The name of the anti-aliasing variable in the [ConfigFile].
+@export var anti_aliasing_key : StringName = "Anti-aliasing"
+## The name of the section of the anti-aliasing variable in the [ConfigFile].
+@export var video_section : StringName = AppSettings.VIDEO_SECTION
+
+func _ready() -> void:
+	var anti_aliasing : int = PlayerConfig.get_config(video_section, anti_aliasing_key, Viewport.MSAA_DISABLED)
+	msaa_2d = anti_aliasing as MSAA
+	msaa_3d = anti_aliasing as MSAA

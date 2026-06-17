@@ -1,3 +1,17 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:afd33997df2399545fd349c6b8f0d5059de64fddd278bece4d4e7d1fc987e5ea
-size 568
+[gd_scene format=3 uid="uid://2ubjcuhlam2o"]
+
+[node name="DeleteExamplesShortConfirmationDialog" type="ConfirmationDialog" unique_id=529102880]
+oversampling_override = 1.0
+title = "Delete Source Examples"
+initial_position = 2
+size = Vector2i(1024, 300)
+visible = true
+ok_button_text = "Yes"
+dialog_text = "This will delete the original examples folder from the plugin (inside of addons/).
+
+Copies of the examples (outside of addons/) will not be affected.
+
+Are you sure you would like to delete the examples folder? 
+"
+dialog_autowrap = true
+cancel_button_text = "No"

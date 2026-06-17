@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5f3b8bde11bb52423512a21020455c3296904206e5d268f681ef858eda9e8748
-size 515
+extends Label
+
+@onready var action_names := AppSettings.get_action_names()
+
+func _get_inputs_as_string() -> String:
+	var all_inputs : String = ""
+	var is_first : bool = true
+	for action_name in action_names:
+			if Input.is_action_pressed(action_name):
+				if is_first:
+					is_first = false
+					all_inputs += action_name
+				else:
+					all_inputs += " + " + action_name
+	return all_inputs
+
+func _process(_delta : float) -> void:
+	if Input.is_anything_pressed():
+		text = _get_inputs_as_string()
+	else:
+		text = ""

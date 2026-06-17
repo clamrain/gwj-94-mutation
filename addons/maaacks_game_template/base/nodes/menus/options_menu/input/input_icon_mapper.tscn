@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2f9303dd96796d4930ce8acadab2de5fcaee91519b63051e5c591427b67adef9
-size 308
+[gd_scene format=3 uid="uid://qoexj4ptqt8a"]
+
+[ext_resource type="Script" uid="uid://cqigj1uumknrp" path="res://addons/maaacks_game_template/base/nodes/menus/options_menu/input/input_icon_mapper.gd" id="1_msrpt"]
+
+[node name="InputIconMapper" type="Node" unique_id=609498054]
+script = ExtResource("1_msrpt")

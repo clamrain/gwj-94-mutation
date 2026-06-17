@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:794da4ab64fda45dcfdfec5d5df285e9f2ce2094c39bf36b16ab712741294f04
-size 681
+	
+
+	Input Prompts (1.1b)
+
+	Created/distributed by Kenney (www.kenney.nl)
+	Creation date: 26-06-2024
+
+			------------------------------
+
+	License: (Creative Commons Zero, CC0)
+	http://creativecommons.org/publicdomain/zero/1.0/
+
+	You can use this content for personal, educational, and commercial purposes.
+
+	Support by crediting 'Kenney' or 'www.kenney.nl' (this is not a requirement)
+
+			------------------------------
+
+	• Website : www.kenney.nl
+	• Donate  : www.kenney.nl/donate
+
+	• Patreon : patreon.com/kenney
+	
+	Follow on social media for updates:
+
+	• Twitter:	twitter.com/KenneyNL
+	• Instagram: 	instagram.com/kenney_nl
+	• Mastodon:	mastodon.gamedev.place/@kenney
