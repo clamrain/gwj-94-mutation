@@ -6,7 +6,7 @@
 
 [sub_resource type="Curve" id="Curve_bwt6v"]
 _limits = [1.0, 3.0, 0.0, 1.0]
-_data = [Vector2(0, 1), 0.0, 0.46544126, 0, 0, Vector2(0.73042506, 1.4300847), -0.3887829, -0.3887829, 0, 0, Vector2(1, 2.5361562), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.46544126, 0, 0, Vector2(0.9004474, 1.4300847), -0.3887829, -0.3887829, 0, 0, Vector2(1, 2.5361562), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_mbpii"]
@@ -16,12 +16,12 @@ point_count = 3
 
 [sub_resource type="Curve" id="Curve_tvbo0"]
 _limits = [0.0, 90.0, 0.0, 1.0]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.67202973, 13.465752), 0.0, 0.0, 0, 0, Vector2(1, 29.118874), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 90), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Curve" id="Curve_wk6d1"]
 _limits = [0.0, 90.0, 0.0, 1.0]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.67202973, 13.465752), 0.0, 0.0, 0, 0, Vector2(1, 45.192677), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.81543624, 19.849571), 0.0, 0.0, 0, 0, Vector2(1, 53.065674), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_tvbo0"]
@@ -56,14 +56,13 @@ radius = 1.0
 script = ExtResource("1_vwn68")
 branch_scene = ExtResource("2_bwt6v")
 fruit_scene = ExtResource("3_tvbo0")
-order = 18
 subbranch_count_distribution = SubResource("Curve_bwt6v")
 subbranch_count_order_variation = SubResource("Curve_mbpii")
 subbranch_spread_horizontal = SubResource("Curve_tvbo0")
 subbranch_spread_vertical = SubResource("Curve_wk6d1")
 subbranch_scale_multiplier = 0.98
 branch_growing_duration = 0.1
-fruit_branch_min_order = null
+fruit_branch_min_order = 5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1360904410]
 mesh = SubResource("SphereMesh_2skyl")

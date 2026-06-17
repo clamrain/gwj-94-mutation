@@ -13,7 +13,7 @@ radius = 0.2
 
 [node name="Player" type="CharacterBody3D" unique_id=1655874129]
 script = ExtResource("1_5fytw")
-speed = 0.61
+speed = 0.65
 momentum_scale = 0.504
 fov_switch_duration = 0.067
 fov_switch_strength = 0.094

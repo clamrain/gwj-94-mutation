@@ -45,25 +45,24 @@ static func get_randomized_genome() -> PackedByteArray:
 		new_genome[i] = randi() % 256
 	return new_genome
 
-func get_polygene_value_as_float(gene_id: String) -> float:
+func get_gene(gene_id: String) -> Gene:
 	var gene: Gene = null
 	for g: Variant in dna_format.gene_list:
 		if g.id == gene_id:
 			gene = g
-	assert(gene.type == "poly")
-		
+	assert(gene != null, "Gene with id '%s' does not exist." % gene_id)
+	return gene
+
+func get_polygene_as_float(gene_id: String) -> float:
+	var gene: Gene = get_gene(gene_id)
+	assert(gene.type == "poly")	
 	var result = 0
 	for i in range(gene.start_position, gene.end_position):
 		result += evaulate_locus(i)
-
 	return inverse_lerp(0, (gene.end_position - gene.start_position)*2, result)
 
 func get_gene_value(gene_id: String) -> int:
-	var gene: Gene = null
-	for g: Variant in dna_format.gene_list:
-		if g.id == gene_id:
-			gene = g
-	
+	var gene: Gene = get_gene(gene_id)
 	var result = -1
 	if gene:
 		match(gene.type):

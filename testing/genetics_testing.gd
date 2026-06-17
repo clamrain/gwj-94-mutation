@@ -10,7 +10,7 @@ func generate_polygenes():
 	print("--------------------")
 	for i in range(object_count):
 		var dna = DNA.new_random()
-		print("stem_color_r: %f" % dna.get_polygene_value_as_float("stem_color_r"))
+		print("stem_color_r: %f" % dna.get_polygene_as_float("stem_color_r"))
 	print("--------------------")
 
 func mutation_test():

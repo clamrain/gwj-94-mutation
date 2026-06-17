@@ -45,15 +45,23 @@ metadata/_custom_type_script = "uid://buve8f5lybthp"
 
 [sub_resource type="Resource" id="Resource_70fuu"]
 script = ExtResource("1_tmrbn")
-id = "order_size"
+id = "order_count"
 type = "poly"
 start_position = 64
 end_position = 68
 metadata/_custom_type_script = "uid://buve8f5lybthp"
 
+[sub_resource type="Resource" id="Resource_w747c"]
+script = ExtResource("1_tmrbn")
+id = "branch_angle"
+type = "poly"
+start_position = 68
+end_position = 72
+metadata/_custom_type_script = "uid://buve8f5lybthp"
+
 [resource]
 script = ExtResource("1_i8dm3")
-genome_byte_count = 8
+genome_byte_count = 12
 chromosome_byte_count = 2
-gene_list = Array[ExtResource("1_tmrbn")]([SubResource("Resource_tmrbn"), SubResource("Resource_40e5y"), SubResource("Resource_uh4wp"), SubResource("Resource_dlw4g"), SubResource("Resource_ulplu"), SubResource("Resource_70fuu")])
+gene_list = Array[ExtResource("1_tmrbn")]([SubResource("Resource_tmrbn"), SubResource("Resource_40e5y"), SubResource("Resource_uh4wp"), SubResource("Resource_dlw4g"), SubResource("Resource_ulplu"), SubResource("Resource_70fuu"), SubResource("Resource_w747c")])
 metadata/_custom_type_script = "uid://n4crb3gwrk3n"

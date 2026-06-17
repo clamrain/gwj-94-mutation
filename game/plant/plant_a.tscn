@@ -7,3 +7,4 @@
 [node name="Plant" unique_id=1486385375 instance=ExtResource("1_vc6ps")]
 branch_scene = ExtResource("2_lq1g4")
 fruit_scene = ExtResource("3_yjlbg")
+max_branch_count = 75

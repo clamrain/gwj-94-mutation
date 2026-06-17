@@ -2,9 +2,7 @@
 extends Node3D
 class_name Branch
 
-var order = -1
-
-@onready var subbranches: Node3D = $Subbranches
+@onready var subbranches: Node3D = %Subbranches
 @onready var mesh_instance: MeshInstance3D:
 	get():
 		if not mesh_instance:
@@ -17,3 +15,6 @@ var order = -1
 		if $StemMesh and $ThornsMesh:
 			$StemMesh.get_active_material(0).albedo_color = color
 			$ThornsMesh.get_active_material(0).albedo_color = color
+
+var order = -1
+var relative_scale = 1

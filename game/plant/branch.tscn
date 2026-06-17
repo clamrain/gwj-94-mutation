@@ -28,7 +28,16 @@ script = ExtResource("1_okq2n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1868821316]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_s4lns")
 
-[node name="Subbranches" type="Node3D" parent="." unique_id=874827259]
+[node name="TransformFilter" type="Node" parent="." unique_id=1146970916]
+
+[node name="Subbranches" type="Node3D" parent="TransformFilter" unique_id=874827259]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="." unique_id=1076722872]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+remote_path = NodePath("../TransformFilter/Subbranches")
+update_scale = false
