@@ -33,7 +33,7 @@ collide_with_areas = true
 
 [node name="HandInventory" parent="Camera3D" unique_id=932815832 instance=ExtResource("6_4ste8")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17000279, -0.11809948, -0.16166982)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17000279, -0.07543749, -0.13406342)
 item_switch_duration = 0.25
 
 [node name="StateMachine" type="Node" parent="." unique_id=2116408061 node_paths=PackedStringArray("initial_state")]

@@ -39,21 +39,40 @@ material = SubResource("StandardMaterial3D_ewf82")
 radius = 0.01
 height = 0.05
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_apki7"]
+transparency = 1
+albedo_color = Color(0, 1, 0, 0.39215687)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8ygx6"]
+material = SubResource("StandardMaterial3D_apki7")
+radius = 0.15
+height = 0.3
+radial_segments = 8
+rings = 4
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_apki7"]
-radius = 0.1
+radius = 0.15
 
 [node name="Fruit" type="Node3D" unique_id=1530437086]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 script = ExtResource("1_apki7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1107096396]
+visible = false
 mesh = SubResource("SphereMesh_2otbg")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1936705505]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_kb4pr")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=410109677 groups=["item_area"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="InteractionOutline" type="MeshInstance3D" parent="Area3D" unique_id=483696666]
+unique_name_in_owner = true
+visible = false
+mesh = SubResource("SphereMesh_8ygx6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1298408170]
 shape = SubResource("SphereShape3D_apki7")

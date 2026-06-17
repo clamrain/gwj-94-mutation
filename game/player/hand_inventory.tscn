@@ -6,5 +6,7 @@
 script = ExtResource("1_lfkrl")
 
 [node name="ItemNodeA" type="MeshInstance3D" parent="." unique_id=1614381484]
+transform = Transform3D(1, 0, 0, 0, -0.70710677, 0.70710677, 0, -0.70710677, -0.70710677, 0, 0, 0)
 
 [node name="ItemNodeB" type="MeshInstance3D" parent="." unique_id=1263459154]
+transform = Transform3D(1, 0, 0, 0, -0.70710677, 0.70710677, 0, -0.70710677, -0.70710677, 0, 0, 0)

@@ -23,9 +23,12 @@ var _mouse_position = Vector2(0.0, 0.0)
 var _total_pitch = 0.0
 
 var momentum = Vector3.ZERO
+var targeted_item = null
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	hand_inventory.item_list.append(fruit_scene.instantiate())
+	hand_inventory.item_list.append(fruit_scene.instantiate())
 	hand_inventory.item_list.append(fruit_scene.instantiate())
 	hand_inventory.item_list.append(fruit_scene.instantiate())
 	hand_inventory.init_item()
@@ -33,6 +36,16 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseMotion:
 		_mouse_position = event.relative
+		if raycast.is_colliding() and raycast.get_collider().is_in_group("item_area"):
+			if targeted_item and raycast.get_collider() != targeted_item:
+				targeted_item.find_child("InteractionOutline").visible = false
+				targeted_item = null
+			if not targeted_item:
+				targeted_item = raycast.get_collider()
+				targeted_item.find_child("InteractionOutline").visible = true
+		elif targeted_item:
+			targeted_item.find_child("InteractionOutline").visible = false
+			targeted_item = null
 	if event.is_action_released("interact") and raycast.is_colliding():
 		raycast_interact()
 

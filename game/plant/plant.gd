@@ -38,6 +38,11 @@ func new_branch() -> Branch:
 	)
 	return branch
 
+func new_fruit(fruit_dna: DNA) -> Fruit:
+	var fruit: Fruit = fruit_scene.instantiate()
+	fruit.dna = fruit_dna
+	return fruit
+
 func generate():
 	clear()
 	if Engine.is_editor_hint():
@@ -116,10 +121,10 @@ func generate():
 				var pollinator_plant: Plant = neighbor_plants.pick_random().get_parent()
 				genome_a = dna.get_shuffled_genome()
 				genome_b = pollinator_plant.dna.get_shuffled_genome()
-			var fruit: Fruit = fruit_scene.instantiate()
+
 			var new_dna = DNA.new(genome_a, genome_b)
 			new_dna.mutate(4)
-			fruit.dna = new_dna
+			var fruit: Fruit = new_fruit(new_dna)
 			branch.add_child(fruit)
 			fruit.owner = self
 			fruit.global_basis = fruit.global_basis.orthonormalized().scaled(Vector3.ONE*0.5).rotated(Vector3.UP, PI)

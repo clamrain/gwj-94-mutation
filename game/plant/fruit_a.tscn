@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dqlg2qn5hh14u" path="res://game/assets/flower/Textures/flow2.png" id="4_fv5d2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iyb05"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("2_3favi")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xgjfm"]
@@ -86,6 +87,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0k3xc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sps5e"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("4_fv5d2")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ylfo"]
@@ -128,16 +130,11 @@ shadow_mesh = SubResource("ArrayMesh_llenk")
 
 [node name="Fruit" unique_id=1530437086 instance=ExtResource("1_muhuo")]
 
-[node name="MeshInstance3D" parent="." index="0" unique_id=1107096396]
-visible = false
-
-[node name="MeshInstance3D2" parent="." index="1" unique_id=1936705505]
-visible = false
-
 [node name="Node3D" type="Node3D" parent="." index="3" unique_id=765040289]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0.185, 0)
 
-[node name="pCube3" type="MeshInstance3D" parent="Node3D" index="0" unique_id=912830335]
+[node name="LeafMesh" type="MeshInstance3D" parent="Node3D" index="0" unique_id=912830335]
+unique_name_in_owner = true
 transform = Transform3D(0.10000001, 0, 0, 0, -4.371139e-09, -0.10000001, 0, 0.10000001, -4.371139e-09, -0.0019404618, 0.09565504, 0.028131204)
 material_override = SubResource("StandardMaterial3D_iyb05")
 mesh = SubResource("ArrayMesh_a872i")
@@ -153,7 +150,8 @@ metadata/extras = {
 }
 }
 
-[node name="pasted__pPlane2" type="MeshInstance3D" parent="Node3D" index="1" unique_id=1835678236]
+[node name="MouthMesh" type="MeshInstance3D" parent="Node3D" index="1" unique_id=1835678236]
+unique_name_in_owner = true
 transform = Transform3D(0.10000001, 0, 0, 0, -4.371139e-09, -0.10000001, 0, 0.10000001, -4.371139e-09, 0, 0.118990324, 0)
 material_override = SubResource("StandardMaterial3D_gse8d")
 mesh = SubResource("ArrayMesh_o681b")
@@ -166,7 +164,8 @@ metadata/extras = {
 }
 }
 
-[node name="pCube4" type="MeshInstance3D" parent="Node3D" index="2" unique_id=1587765540]
+[node name="CoreMesh" type="MeshInstance3D" parent="Node3D" index="2" unique_id=1587765540]
+unique_name_in_owner = true
 transform = Transform3D(0.10000001, 0, 0, 0, -4.371139e-09, -0.10000001, 0, 0.10000001, -4.371139e-09, 0, 0.095, 0)
 material_override = SubResource("StandardMaterial3D_sps5e")
 mesh = SubResource("ArrayMesh_8blkg")
