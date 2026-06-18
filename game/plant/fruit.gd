@@ -14,7 +14,7 @@ var dna: DNA:
 @export_color_no_alpha var color: Color = Color.WHITE:
 	set(_color):
 		color = _color
-		if %LeafMesh and %CoreMesh:
+		if get_node_or_null("%LeafMesh") and get_node_or_null("%CoreMesh"):
 			%LeafMesh.get_active_material(0).albedo_color = color
 			%CoreMesh.get_active_material(0).albedo_color = color
 			%CoreMesh.get_active_material(0).albedo_color

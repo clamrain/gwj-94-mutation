@@ -47,7 +47,7 @@ rings = 5
 is_hemisphere = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_tvbo0"]
-radius = 0.1
+radius = 0.15
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mbpii"]
 radius = 1.0
@@ -68,7 +68,7 @@ fruit_branch_min_order = 5
 mesh = SubResource("SphereMesh_2skyl")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=460976083 groups=["plant_area"]]
-collision_layer = 2
+collision_layer = 6
 collision_mask = 0
 monitoring = false
 

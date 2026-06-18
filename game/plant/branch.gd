@@ -17,4 +17,4 @@ class_name Branch
 			$ThornsMesh.get_active_material(0).albedo_color = color
 
 var order = -1
-var relative_scale = 1
+var relative_scale: float = 1.0

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b1jkcsqrc88r2"]
+
+[ext_resource type="Script" uid="uid://bhofvn4t6fvdt" path="res://game/player/shovel.gd" id="1_mgbxg"]
+[ext_resource type="PackedScene" uid="uid://blv20qrwk574o" path="res://game/assets/Bshovel/FBX/Bshovel.fbx" id="1_yrchc"]
+
+[node name="Shovel" type="Node3D" unique_id=2035540957]
+script = ExtResource("1_mgbxg")
+
+[node name="Origin" type="Node3D" parent="." unique_id=1212956163]
+transform = Transform3D(-0.2, 1.7484556e-08, 0, -5.9800707e-09, -0.068404034, -0.18793853, -1.6430107e-08, -0.18793853, 0.068404034, 0, 0.045, -0.115)
+
+[node name="Bshovel" parent="Origin" unique_id=1564924704 instance=ExtResource("1_yrchc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bodpnalw7vl26"]
+
+[ext_resource type="Material" uid="uid://d0xqxpy0ea16t" path="res://game/plant_hologram.tres" id="2_op3sk"]
+
+[sub_resource type="Gradient" id="Gradient_tvbo0"]
+colors = PackedColorArray(0.33, 0.15400001, 0, 1, 0.17, 0.11905667, 0.0646, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mbpii"]
+frequency = 0.0424
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wk6d1"]
+height = 128
+noise = SubResource("FastNoiseLite_mbpii")
+color_ramp = SubResource("Gradient_tvbo0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_asyso"]
+albedo_texture = SubResource("NoiseTexture2D_wk6d1")
+
+[sub_resource type="SphereMesh" id="SphereMesh_2skyl"]
+material = SubResource("StandardMaterial3D_asyso")
+radius = 0.05
+height = 0.05
+radial_segments = 8
+rings = 5
+is_hemisphere = true
+
+[node name="PlantHologram" type="Node3D" unique_id=852672285]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1360904410]
+material_override = ExtResource("2_op3sk")
+mesh = SubResource("SphereMesh_2skyl")

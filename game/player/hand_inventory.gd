@@ -30,7 +30,7 @@ func init_item():
 func erase_item(item: Node3D):
 	if item_list.has(item):
 		item_list.erase(item)
-	cursor = max(cursor-1,0)
+	cursor = posmod(cursor - 1, item_list.size())
 	init_item()
 
 func _input(event: InputEvent) -> void:
@@ -49,7 +49,8 @@ func _switch_item(new_item: Node3D):
 	if passive_item_node.get_child_count() > 0:
 		passive_item_node.remove_child(passive_item_node.get_child(0))
 	passive_item_node.add_child(new_item)
-	new_item.scale = Vector3.ONE * 0.3
+	if not new_item is Plant:
+		new_item.scale = Vector3.ONE * 0.3
 	create_tween().tween_property(passive_item_node, "position", ACTIVE_POSITION, item_switch_duration)
 	create_tween().tween_property(active_item_node, "position", PASSIVE_POSITION, item_switch_duration)
 	

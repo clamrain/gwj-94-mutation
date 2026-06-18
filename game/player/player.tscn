@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bfa14rrcc6lkb" path="res://game/player/player.gd" id="1_5fytw"]
 [ext_resource type="Script" uid="uid://t6wv3jcmgsu5" path="res://addons/state_machine/state_machine.gd" id="2_4ste8"]
+[ext_resource type="PackedScene" uid="uid://bodpnalw7vl26" path="res://game/plant_hologram.tscn" id="2_anr75"]
+[ext_resource type="PackedScene" uid="uid://b1jkcsqrc88r2" path="res://game/player/shovel.tscn" id="2_epvkq"]
 [ext_resource type="Script" uid="uid://cesin1gp2pgc8" path="res://game/player/states/airborne.gd" id="3_anr75"]
 [ext_resource type="Script" uid="uid://cbni5qpwn8fno" path="res://game/player/states/idle.gd" id="4_epvkq"]
 [ext_resource type="Script" uid="uid://db6p5atubmigm" path="res://game/player/states/walking.gd" id="5_5ghna"]
@@ -13,8 +15,9 @@ radius = 0.2
 
 [node name="Player" type="CharacterBody3D" unique_id=1655874129]
 script = ExtResource("1_5fytw")
-speed = 0.65
-momentum_scale = 0.504
+shovel_scene = ExtResource("2_epvkq")
+speed = 1.0
+momentum_scale = 0.44
 fov_switch_duration = 0.067
 fov_switch_strength = 0.094
 fov = 90
@@ -23,12 +26,17 @@ metadata/_custom_type_script = "uid://bfa14rrcc6lkb"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1714670034]
 shape = SubResource("CylinderShape3D_r3fl7")
 
+[node name="PlantHologram" parent="." unique_id=852672285 instance=ExtResource("2_anr75")]
+unique_name_in_owner = true
+visible = false
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=160440869]
 unique_name_in_owner = true
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=841791202]
 unique_name_in_owner = true
 target_position = Vector3(0, 0, -1)
+collision_mask = 5
 collide_with_areas = true
 
 [node name="HandInventory" parent="Camera3D" unique_id=932815832 instance=ExtResource("6_4ste8")]

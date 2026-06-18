@@ -3,6 +3,7 @@ class_name Player
 
 @export var fruit_scene: PackedScene
 @export var plant_scene: PackedScene
+@export var shovel_scene: PackedScene
 
 @export var speed: float = 5.0
 @export_range(0.0, 1.0) var momentum_scale: float = 0.1
@@ -18,6 +19,7 @@ class_name Player
 @onready var camera: Camera3D = %Camera3D
 @onready var raycast: RayCast3D = %RayCast3D
 @onready var hand_inventory: HandInventory = %HandInventory
+@onready var plant_hologram: Node3D = %PlantHologram
 
 var _mouse_position = Vector2(0.0, 0.0)
 var _total_pitch = 0.0
@@ -27,6 +29,7 @@ var targeted_item = null
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	hand_inventory.item_list.append(shovel_scene.instantiate())
 	hand_inventory.item_list.append(fruit_scene.instantiate())
 	hand_inventory.item_list.append(fruit_scene.instantiate())
 	hand_inventory.item_list.append(fruit_scene.instantiate())
@@ -36,6 +39,13 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseMotion:
 		_mouse_position = event.relative
+
+		if raycast.is_colliding() and raycast.get_collider().is_in_group("farmland") and hand_inventory.get_held_item() is Fruit:
+			plant_hologram.global_position = raycast.get_collision_point()
+			plant_hologram.visible = true
+		elif plant_hologram.visible:
+			plant_hologram.visible = false
+
 		if raycast.is_colliding() and raycast.get_collider().is_in_group("item_area"):
 			if targeted_item and raycast.get_collider() != targeted_item:
 				targeted_item.find_child("InteractionOutline").visible = false
@@ -46,6 +56,7 @@ func _input(event):
 		elif targeted_item:
 			targeted_item.find_child("InteractionOutline").visible = false
 			targeted_item = null
+
 	if event.is_action_released("interact") and raycast.is_colliding():
 		raycast_interact()
 
@@ -85,10 +96,30 @@ func _update_rotation():
 func raycast_interact():
 	var collider: Node3D = raycast.get_collider()
 
+	if collider.is_in_group("plant_area") and hand_inventory.get_held_item() is Shovel:
+		var plant: Plant = collider.get_parent()
+		plant.frozen = true
+		plant.get_parent().remove_child(plant)
+		plant.position = Vector3(0,0.15,0)
+		plant.rotate_x(PI*0.75)
+		# plant.transform = Transform3D.IDENTITY
+
+		hand_inventory.item_list.append(plant)
+		hand_inventory.init_item()
+
 	if collider.is_in_group("farmland"):
 		var item = hand_inventory.get_held_item()
 		if item is Fruit:
 			plant_fruit(item)
+			plant_hologram.visible = false
+		elif item is Plant:
+			hand_inventory.erase_item(item)
+			item.get_parent().remove_child(item)
+			collider.add_child(item)
+			item.owner = collider
+			item.transform = Transform3D.IDENTITY
+			item.global_position = raycast.get_collision_point()
+			item.frozen = false
 
 	if collider.is_in_group("item_area"):
 		var item = collider.get_parent()

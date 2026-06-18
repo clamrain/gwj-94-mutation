@@ -2,6 +2,9 @@
 extends Node3D
 class_name Plant
 
+signal unfrozen()
+signal order_grown()
+
 @export_group("Assets")
 @export var branch_scene: PackedScene
 @export var fruit_scene: PackedScene
@@ -28,6 +31,16 @@ class_name Plant
 var root_branch: Branch = null
 var branches: Array[Branch] = []
 var dna: DNA = null
+var frozen := false:
+	set(_frozen):
+		frozen = _frozen
+		if frozen:
+			for tween in running_tweens:
+				tween.pause()
+		else:
+			for tween in running_tweens:
+				tween.play()
+			unfrozen.emit()
 
 func new_branch() -> Branch:
 	var branch: Branch = branch_scene.instantiate()
@@ -90,9 +103,10 @@ func generate():
 			if current_branch_count >= max_branch_count:
 				break
 
+		if frozen:
+			await unfrozen
 
-		# wait for growing animations to finish
-		await get_tree().create_timer(branch_growing_duration * 1.05).timeout	
+		await order_grown
 
 		current_order += 1
 		target_branches = new_target_branches
@@ -130,12 +144,17 @@ func generate():
 			fruit.global_basis = fruit.global_basis.orthonormalized().scaled(Vector3.ONE*0.5).rotated(Vector3.UP, PI)
 			fruit.global_position -= fruit.global_transform.basis.y*0.13
 
+var running_tweens: Array[Tween] = []
 func animate_growth(b, t_b):
 	b.scale = Vector3.ONE * 0.1
 	var tween = create_tween()
+	running_tweens.append(tween)
 	b.relative_scale = t_b.relative_scale * subbranch_scale_multiplier
-	tween.tween_property(b, "scale", t_b.scale, branch_growing_duration)
+	tween.tween_property(b, "scale", t_b.scale * b.relative_scale , branch_growing_duration)
 	await tween.finished
+	running_tweens.erase(tween)
+	if running_tweens.is_empty():
+		order_grown.emit()
 
 func clear():
 	if root_branch:
