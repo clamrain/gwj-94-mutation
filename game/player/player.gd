@@ -124,6 +124,8 @@ func raycast_interact():
 	if collider.is_in_group("item_area"):
 		var item = collider.get_parent()
 		item.get_parent().remove_child(item)
+		if item is Fruit:
+			item.origin_plant.fruit_count -= 1
 		item.transform = Transform3D.IDENTITY
 		hand_inventory.item_list.append(item)
 		hand_inventory.init_item()

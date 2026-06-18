@@ -20,13 +20,24 @@ signal order_grown()
 
 @export var branch_growing_duration: float = 0.5
 @export var fruit_branch_min_order: int = 6
-@export var fruit_count: int = 4
+@export var max_fruit_count: int = 4
+@export var fruit_grow_tick_chance: float = 1.0 / 600.0
+@export var fruit_grow_stage_mature: int = 8
+
 
 @export_group("")
 @export_tool_button("Generate") var _generate_button = generate
 @export_tool_button("Clear") var _clear_button = clear
 
 @onready var pollination_candidate_area: Area3D = %PollinationCandidateRadius
+
+func _physics_process(delta):
+	if grown and fruit_count < max_fruit_count and randf() < fruit_grow_tick_chance:
+		fruit_grow_stage += 1
+		print("fruit_grow_stage: %d" % fruit_grow_stage)
+		if fruit_grow_stage >= fruit_grow_stage_mature:
+			fruit_grow_stage = 0
+			spawn_fruit()
 
 var root_branch: Branch = null
 var branches: Array[Branch] = []
@@ -41,6 +52,9 @@ var frozen := false:
 			for tween in running_tweens:
 				tween.play()
 			unfrozen.emit()
+var grown := false
+var fruit_grow_stage := 0
+var fruit_count := 0
 
 func new_branch() -> Branch:
 	var branch: Branch = branch_scene.instantiate()
@@ -114,35 +128,42 @@ func generate():
 		if current_branch_count >= max_branch_count:
 			break
 
-	# spawn fruits
-	var _branches = branches.duplicate()
-	for i in range(fruit_count):
-		var branch = null
-		while not branch or branch.order < fruit_branch_min_order:
-			branch = _branches.pick_random()
-		_branches.erase(branch)
+	grown = true
 
-		var neighbor_plants = pollination_candidate_area.get_overlapping_areas()
-		if neighbor_plants.has($Area3D):
-			neighbor_plants.erase($Area3D)
-		if not neighbor_plants.is_empty() or Engine.is_editor_hint():
-			var genome_a = null
-			var genome_b = null
-			if Engine.is_editor_hint():
-				genome_a = DNA.get_randomized_genome()
-				genome_b = DNA.get_randomized_genome()
-			else:
-				var pollinator_plant: Plant = neighbor_plants.pick_random().get_parent()
-				genome_a = dna.get_shuffled_genome()
-				genome_b = pollinator_plant.dna.get_shuffled_genome()
+func spawn_fruit():
 
-			var new_dna = DNA.new(genome_a, genome_b)
-			new_dna.mutate(4)
-			var fruit: Fruit = new_fruit(new_dna)
-			branch.add_child(fruit)
-			fruit.owner = self
-			fruit.global_basis = fruit.global_basis.orthonormalized().scaled(Vector3.ONE*0.5).rotated(Vector3.UP, PI)
-			fruit.global_position -= fruit.global_transform.basis.y*0.13
+	var branch = null
+
+	while not branch or branch.order < fruit_branch_min_order:
+		branch = branches.pick_random()
+		for child in branch.get_children():
+			if child is Fruit:
+				branch = null
+
+	var neighbor_plants = pollination_candidate_area.get_overlapping_areas()
+	if neighbor_plants.has($Area3D):
+		neighbor_plants.erase($Area3D)
+	if not neighbor_plants.is_empty() or Engine.is_editor_hint():
+		var genome_a = null
+		var genome_b = null
+		if Engine.is_editor_hint():
+			genome_a = DNA.get_randomized_genome()
+			genome_b = DNA.get_randomized_genome()
+		else:
+			var pollinator_plant: Plant = neighbor_plants.pick_random().get_parent()
+			genome_a = dna.get_shuffled_genome()
+			genome_b = pollinator_plant.dna.get_shuffled_genome()
+
+		var new_dna = DNA.new(genome_a, genome_b)
+		new_dna.mutate(4)
+		var fruit: Fruit = new_fruit(new_dna)
+		branch.add_child(fruit)
+		fruit.origin_plant = self
+		fruit_count += 1
+		fruit.owner = self
+		fruit.global_basis = fruit.global_basis.orthonormalized().scaled(Vector3.ONE*0.5).rotated(Vector3.UP, PI)
+		fruit.global_position -= fruit.global_transform.basis.y*0.13
+
 
 var running_tweens: Array[Tween] = []
 func animate_growth(b, t_b):

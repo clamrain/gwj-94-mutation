@@ -2,6 +2,7 @@
 extends Node3D
 class_name Fruit
 
+var origin_plant: Plant = null
 var dna: DNA:
 	set(_dna):
 		dna = _dna
